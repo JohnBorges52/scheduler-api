@@ -31,9 +31,9 @@ function read(file) {
 
 module.exports = function application(
   ENV,
-  actions = { updateAppointment: () => {} }
+  actions = { updateAppointment: () => { } }
 ) {
-  app.use(cors());
+  app.use(cors('*'));
   app.use(helmet());
   app.use(bodyparser.json());
 
@@ -61,7 +61,7 @@ module.exports = function application(
       });
   }
 
-  app.close = function() {
+  app.close = function () {
     return db.end();
   };
 
